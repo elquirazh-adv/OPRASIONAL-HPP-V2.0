@@ -1,0 +1,409 @@
+{
+  "settings": {
+    "laborRate": 18000,
+    "margin": 30,
+    "rent": 1500000,
+    "other": 800000,
+    "hours": 208
+  },
+  "machines": [
+    {
+      "id": "mch_vgk0riz",
+      "name": "Printer Indoor Solvent 3.2m",
+      "process": "indoor",
+      "price": 55000000,
+      "usefulYears": 5,
+      "hoursPerDay": 8,
+      "daysPerMonth": 26,
+      "wattage": 2200,
+      "elecRate": 1500,
+      "maintenance": 400000,
+      "extraPerHour": 0,
+      "speed": 10
+    },
+    {
+      "id": "mch_78m4hf9",
+      "name": "Cutting Plotter Vinyl 1.6m",
+      "process": "cutting",
+      "price": 18000000,
+      "usefulYears": 5,
+      "hoursPerDay": 8,
+      "daysPerMonth": 26,
+      "wattage": 350,
+      "elecRate": 1500,
+      "maintenance": 150000,
+      "extraPerHour": 0,
+      "speed": 20
+    },
+    {
+      "id": "mch_7e2dw3n",
+      "name": "Laser CO₂ 100W 90x60",
+      "process": "laser",
+      "price": 65000000,
+      "usefulYears": 6,
+      "hoursPerDay": 8,
+      "daysPerMonth": 24,
+      "wattage": 3000,
+      "elecRate": 1500,
+      "maintenance": 500000,
+      "extraPerHour": 5000,
+      "speed": 0
+    },
+    {
+      "id": "mch_p8qxfgm",
+      "name": "Digital Press A3+ (Fiery)",
+      "process": "docu",
+      "price": 120000000,
+      "usefulYears": 7,
+      "hoursPerDay": 8,
+      "daysPerMonth": 26,
+      "wattage": 1800,
+      "elecRate": 1500,
+      "maintenance": 600000,
+      "extraPerHour": 0,
+      "speed": 3000
+    }
+  ],
+  "materials": [
+    {
+      "id": "mat_muee66dcub6d_indoor",
+      "name": "Baner 320 gsm 160",
+      "process": "indoor",
+      "price": 6550,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "",
+      "widthM": 1.6,
+      "salePriceM": 35000,
+      "stock": 60,
+      "used": 0,
+      "masterId": "mat_muee66dcub6d"
+    },
+    {
+      "id": "mat_muee31bksme3_indoor",
+      "name": "One way 127",
+      "process": "indoor",
+      "price": 27500,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "",
+      "widthM": 1.27,
+      "salePriceM": 95000,
+      "stock": 25,
+      "used": 0,
+      "masterId": "mat_muee31bksme3"
+    },
+    {
+      "id": "mat_muedz26omgkk_cutting",
+      "name": "Fosfor putih",
+      "process": "cutting",
+      "price": 35500,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "",
+      "widthM": 0.6,
+      "salePriceM": 60000,
+      "stock": 7,
+      "used": 0,
+      "masterId": "mat_muedz26omgkk"
+    },
+    {
+      "id": "mat_muedy45ca8zv_indoor",
+      "name": "Laminasi 152",
+      "process": "indoor",
+      "price": 7800,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "",
+      "widthM": 1.52,
+      "salePriceM": 25000,
+      "stock": 12,
+      "used": 0,
+      "masterId": "mat_muedy45ca8zv"
+    },
+    {
+      "id": "mat_muedx09k44kv_indoor",
+      "name": "Laminasi 127",
+      "process": "indoor",
+      "price": 7800,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "",
+      "widthM": 1.27,
+      "salePriceM": 25000,
+      "stock": 12,
+      "used": 0,
+      "masterId": "mat_muedx09k44kv"
+    },
+    {
+      "id": "mat_muedvsootqdx_indoor",
+      "name": "Laminasi 107",
+      "process": "indoor",
+      "price": 10000,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "",
+      "widthM": 1.07,
+      "salePriceM": 30000,
+      "stock": 25,
+      "used": 0,
+      "masterId": "mat_muedvsootqdx"
+    },
+    {
+      "id": "m1_indoor",
+      "name": "Exillo 107",
+      "process": "indoor",
+      "price": 14500,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "100 × 60 cm",
+      "widthM": 1.07,
+      "salePriceM": 75000,
+      "stock": 20,
+      "used": 0,
+      "masterId": "m1"
+    },
+    {
+      "id": "m2_indoor",
+      "name": "Exillo 127",
+      "process": "indoor",
+      "price": 14500,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "100 × 60 cm",
+      "widthM": 1.27,
+      "salePriceM": 75000,
+      "stock": 30,
+      "used": 0,
+      "masterId": "m2"
+    },
+    {
+      "id": "m3_indoor",
+      "name": "Exillo 152",
+      "process": "indoor",
+      "price": 14500,
+      "unit": "meter",
+      "waste": 0,
+      "note": "",
+      "size": "100 × 50 cm",
+      "widthM": 1.52,
+      "salePriceM": 75000,
+      "stock": 35,
+      "used": 0,
+      "masterId": "m3"
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "bm_294yq12",
+      "name": "Indoor Flexi China (per m²)",
+      "p1": 35000,
+      "p2": 32000,
+      "p3": 28000,
+      "note": "Harga member/broker"
+    },
+    {
+      "id": "bm_6jdhaqc",
+      "name": "Cutting Sticker Oracal (per m²)",
+      "p1": 60000,
+      "p2": 55000,
+      "p3": 48000,
+      "note": ""
+    },
+    {
+      "id": "bm_rb0z712",
+      "name": "Laser Akrilik 3mm (per lembar 60×90)",
+      "p1": 150000,
+      "p2": 140000,
+      "p3": 125000,
+      "note": ""
+    },
+    {
+      "id": "bm_t216stx",
+      "name": "Docu A3+ HVS (per lembar)",
+      "p1": 3000,
+      "p2": 2500,
+      "p3": 2000,
+      "note": ""
+    }
+  ],
+  "acrylicReferences": [
+    {
+      "id": "ac_iwo98lx",
+      "type": "Bening",
+      "thickness": 2,
+      "size": "100x200",
+      "price": 323000
+    },
+    {
+      "id": "ac_sr6bvcr",
+      "type": "Susu",
+      "thickness": 2,
+      "size": "100x200",
+      "price": 332000
+    },
+    {
+      "id": "ac_wrjf0ff",
+      "type": "Warna",
+      "thickness": 2,
+      "size": "100x200",
+      "price": 363000
+    },
+    {
+      "id": "ac_qhv08tn",
+      "type": "Bening",
+      "thickness": 2,
+      "size": "122x244",
+      "price": 572000
+    },
+    {
+      "id": "ac_4rxksjt",
+      "type": "Susu",
+      "thickness": 2,
+      "size": "122x244",
+      "price": 588000
+    },
+    {
+      "id": "ac_cnz08om",
+      "type": "Warna",
+      "thickness": 2,
+      "size": "122x244",
+      "price": 642000
+    },
+    {
+      "id": "ac_ciaav1p",
+      "type": "Bening",
+      "thickness": 3,
+      "size": "100x200",
+      "price": 549000
+    },
+    {
+      "id": "ac_g1t16om",
+      "type": "Susu",
+      "thickness": 3,
+      "size": "100x200",
+      "price": 563000
+    },
+    {
+      "id": "ac_017ma77",
+      "type": "Warna",
+      "thickness": 3,
+      "size": "100x200",
+      "price": 616000
+    },
+    {
+      "id": "ac_lr845qp",
+      "type": "Bening",
+      "thickness": 3,
+      "size": "122x244",
+      "price": 817000
+    },
+    {
+      "id": "ac_5xg5qym",
+      "type": "Susu",
+      "thickness": 3,
+      "size": "122x244",
+      "price": 838000
+    },
+    {
+      "id": "ac_dydsqwc",
+      "type": "Warna",
+      "thickness": 3,
+      "size": "122x244",
+      "price": 917000
+    },
+    {
+      "id": "ac_u5cd7j1",
+      "type": "Bening",
+      "thickness": 4,
+      "size": "100x200",
+      "price": 616000
+    },
+    {
+      "id": "ac_g2qd7ek",
+      "type": "Susu",
+      "thickness": 4,
+      "size": "100x200",
+      "price": 632000
+    },
+    {
+      "id": "ac_tcpj6h2",
+      "type": "Warna",
+      "thickness": 4,
+      "size": "100x200",
+      "price": 691000
+    },
+    {
+      "id": "ac_7ojz5oo",
+      "type": "Bening",
+      "thickness": 4,
+      "size": "122x244",
+      "price": 1089000
+    },
+    {
+      "id": "ac_yt0aibk",
+      "type": "Susu",
+      "thickness": 4,
+      "size": "122x244",
+      "price": 1117000
+    },
+    {
+      "id": "ac_308f1bi",
+      "type": "Warna",
+      "thickness": 4,
+      "size": "122x244",
+      "price": 1222000
+    },
+    {
+      "id": "ac_uzd1359",
+      "type": "Bening",
+      "thickness": 5,
+      "size": "100x200",
+      "price": 753000
+    },
+    {
+      "id": "ac_f0ny9c5",
+      "type": "Susu",
+      "thickness": 5,
+      "size": "100x200",
+      "price": 773000
+    },
+    {
+      "id": "ac_q660j5x",
+      "type": "Warna",
+      "thickness": 5,
+      "size": "100x200",
+      "price": 846000
+    },
+    {
+      "id": "ac_z9w5q8j",
+      "type": "Bening",
+      "thickness": 5,
+      "size": "122x244",
+      "price": 1332000
+    },
+    {
+      "id": "ac_hcky1b5",
+      "type": "Susu",
+      "thickness": 5,
+      "size": "122x244",
+      "price": 1367000
+    },
+    {
+      "id": "ac_yjw6wg8",
+      "type": "Warna",
+      "thickness": 5,
+      "size": "122x244",
+      "price": 1495000
+    }
+  ],
+  "history": []
+}
