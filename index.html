@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistem Elquirazh ADV — Dark Active v2</title>
+<title>Sistem Elquirazh ADV — Cloud Fixed v4</title>
 <style>
 :root{
   --bg:#0b0f14;--panel:#121821;--panel2:#171f29;--text:#e8eef5;--muted:#91a0b2;
@@ -74,7 +74,7 @@ button,input,select{font:inherit}
 }
 </style>
 </head>
-<body><div id="cloudStatus" style="position:fixed;right:12px;bottom:12px;z-index:9999;background:#151a22;color:#9aa4b2;border:1px solid #26303d;border-radius:8px;padding:7px 10px;font:11px system-ui;opacity:.85">Cloud: menunggu</div>
+<body><div id="cloudStatus" style="position:fixed;right:12px;bottom:12px;z-index:9999;background:#151a22;color:#9aa4b2;border:1px solid #26303d;border-radius:8px;padding:7px 10px;font:11px system-ui;opacity:.9">Cloud: menghubungkan…</div>
 <div class="app">
 <aside class="sidebar">
   <div class="brand"><div class="logo">EA</div><div><strong>SISTEM ELQUIRAZH ADV</strong><span>Sistem Operasional Usaha</span></div></div>
@@ -399,10 +399,11 @@ button,input,select{font:inherit}
    Publishable key is safe for browser use. RLS/policies still control access.
    Replace only SUPABASE_URL with the project URL from Supabase Settings > API.
 */
-const SUPABASE_URL = window.SUPABASE_URL || 'https://YOUR_PROJECT_REF.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_po6LpXOkNFxZzezJgGp2FQ_sHlzMLVw';
-const supabaseClient = (window.supabase && SUPABASE_URL.indexOf('YOUR_PROJECT_REF') === -1)
-  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY) : null;
+const ELQUIRAZH_SUPABASE_URL = 'https://thcaudqyvfgmmhbfnbru.supabase.co';
+const ELQUIRAZH_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_po6LpXOkNFxZzezJgGp2FQ_sHlzMLVw';
+const supabaseClient = (window.supabase && typeof window.supabase.createClient === 'function')
+  ? window.supabase.createClient(ELQUIRAZH_SUPABASE_URL, ELQUIRAZH_SUPABASE_PUBLISHABLE_KEY)
+  : null;
 let cloudReady=false, cloudSyncTimer=null, cloudBusy=false;
 function cloudToast(msg){ try{ showToast(msg); }catch(e){} }
 async function cloudLoad(){
@@ -431,7 +432,7 @@ function scheduleCloudSave(){
   cloudSyncTimer=setTimeout(cloudSave,500);
 }
 async function initCloudSync(){
-  if(!supabaseClient){ console.warn('Supabase URL belum diisi; mode lokal aktif.'); const cs=document.getElementById('cloudStatus'); if(cs) cs.textContent='Cloud: URL belum diisi'; return; }
+  if(!supabaseClient){ console.warn('Supabase JS gagal dimuat. Mode lokal aktif.'); const cs=document.getElementById('cloudStatus'); if(cs) cs.textContent='Cloud: library gagal'; return; }
   try{
     const session=(await supabaseClient.auth.getSession()).data.session;
     if(!session){
@@ -439,7 +440,7 @@ async function initCloudSync(){
       if(error) throw error;
     }
   }catch(e){
-    console.warn('Supabase Auth:',e);
+    console.warn('Supabase Auth:',e); console.warn('Pastikan Anonymous Sign-ins aktif di Supabase Authentication.');
     const cs=document.getElementById('cloudStatus'); if(cs) cs.textContent='Cloud: Auth belum aktif';
     return;
   }
@@ -456,6 +457,7 @@ async function initCloudSync(){
     cloudToast('Data perangkat dikirim ke cloud.');
   }
 }
+const ELQUIRAZH_BUILD='CLOUD-FIXED-V4';
 const KEY='elquirazh_system_active_v3';
 const titles={dashboard:'Dashboard Usaha',orders:'Order & Nota',production:'Queue Produksi',stock:'Stok & Bahan',history:'Riwayat Order',finance:'Keuangan',reports:'Laporan Usaha',master:'Master Data',settings:'Pengaturan Sistem'};
 const defaultState={
@@ -1059,7 +1061,8 @@ document.getElementById('previewNoteSettingsBtn').onclick=()=>{
 
 function renderAll(){renderDashboard();renderOrders();renderProduction();renderStock();renderHistory();renderFinance();renderReports();renderMaster();}
 renderAll();
-setTimeout(initCloudSync,50);
+setTimeout(initCloudSync,100);
+console.info('Elquirazh ADV', ELQUIRAZH_BUILD, 'Supabase URL:', ELQUIRAZH_SUPABASE_URL);
 </script>
 </body>
 </html>
