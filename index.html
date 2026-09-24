@@ -620,7 +620,32 @@ try{
     state=load();
   }
 }catch(err){}
-function save(){localStorage.setItem(KEY,JSON.stringify(state));queueElqCloudSave();}
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(state));
+  queueElqCloudSave();
+}
+
+async function saveSettingsNow(successText){
+  // Simpan lokal terlebih dahulu agar perubahan tidak hilang.
+  localStorage.setItem(KEY,JSON.stringify(state));
+  if(elqSupabase && elqCloudReady){
+    try{
+      await pushElqCloud();
+      setCloudStatus('Cloud: tersimpan ✓',true);
+      showToast(successText||'Pengaturan tersimpan.');
+      return true;
+    }catch(err){
+      console.warn('Cloud save settings gagal:',err);
+      setCloudStatus('Cloud: gagal simpan',false);
+      showToast('Tersimpan lokal. Cloud gagal menyimpan.');
+      return false;
+    }
+  }
+  // Jika koneksi cloud belum siap, tetap pertahankan lokal dan coba sinkron setelah cloud siap.
+  queueElqCloudSave();
+  showToast((successText||'Pengaturan tersimpan.')+' (lokal)');
+  return true;
+}
 function rupiah(n){return 'Rp'+Number(n||0).toLocaleString('id-ID');}
 function uid(p){return p+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -1352,7 +1377,8 @@ document.getElementById('settingsForm').onsubmit=e=>{
     dashboardNote:document.getElementById('sDashboardNote').value.trim(),
     noteSettings:Object.assign({},defaultState.settings.noteSettings,state.settings&&state.settings.noteSettings||{})
   };
-  save();renderSettings();showToast('Pengaturan sistem tersimpan.');
+  renderSettings();
+  saveSettingsNow('Pengaturan sistem tersimpan.');
 };
 document.getElementById('resetSettings').onclick=()=>{
   state.settings={
@@ -1367,7 +1393,8 @@ document.getElementById('resetSettings').onclick=()=>{
     dashboardNote:'Pantau operasional usaha dari satu sistem.',
     noteSettings:Object.assign({},defaultState.settings.noteSettings)
   };
-  save();renderSettings();showToast('Pengaturan dikembalikan ke default.');
+  renderSettings();
+  saveSettingsNow('Pengaturan dikembalikan ke default.');
 };
 
 document.getElementById('noteSettingsForm').onsubmit=e=>{
@@ -1397,11 +1424,13 @@ document.getElementById('noteSettingsForm').onsubmit=e=>{
     watermark:document.getElementById('nWatermark').checked
   };
   state.settings=Object.assign({},state.settings,{noteSettings:ns});
-  save();renderSettings();showToast('Pengaturan nota tersimpan.');
+  renderSettings();
+  saveSettingsNow('Pengaturan nota tersimpan.');
 };
 document.getElementById('resetNoteSettings').onclick=()=>{
   state.settings=Object.assign({},state.settings,{noteSettings:Object.assign({},defaultState.settings.noteSettings)});
-  save();renderSettings();showToast('Pengaturan nota dikembalikan ke default.');
+  renderSettings();
+  saveSettingsNow('Pengaturan nota dikembalikan ke default.');
 };
 document.getElementById('previewNoteSettingsBtn').onclick=()=>{
   const o=state.orders[0];
